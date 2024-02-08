@@ -1,5 +1,5 @@
 const clientId = "68738c44f66d4a36937371c85722708c";
-const redirect_uri = "http://localhost:8080";
+const redirect_uri = "https://willow-red.github.io/cyberfy/";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
