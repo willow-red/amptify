@@ -1,13 +1,14 @@
 {
-    "name": "cyberfy",
-    "version": "1.0.0",
-    "description": "Spotify profile but cute",
-    "scripts": {
-      "start": "http-server --cors public"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "http-server": "^14.1.1"
-    }
+  "name": "cyberfy",
+  "version": "1.0.0",
+  "description": "Spotify API app that is cyber themed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sara Alvarado",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
   }
+}
