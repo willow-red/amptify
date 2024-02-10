@@ -3,16 +3,20 @@ const clientId = "68738c44f66d4a36937371c85722708c";
 const redirect_uri = "https://willow-red.github.io/cyberfy/";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
+let accessToken = null;
 
-export async function loadData(timeRange="short") {
-    if (!code) {
-        redirectToAuthCodeFlow(clientId);
-    } else {
-        const accessToken = await getAccessToken(clientId, code);
-        const profile = await fetchProfile(accessToken);
-        const topTracks = await fetchTopTracks(accessToken, timeRange);
-        populateUI(profile, topTracks);
-    }
+if (!code) {
+    redirectToAuthCodeFlow(clientId);
+} else {
+    accessToken = await getAccessToken(clientId, code);
+    const profile = await fetchProfile(accessToken);
+    const topTracks = await fetchTopTracks(accessToken, timeRange);
+    populateUI(profile, topTracks);
+}
+export async function reloadData(timeRange="short") {
+    //get new time range
+    const topTracks = await fetchTopTracks(accessToken, timeRange);
+    populateUI(profile, topTracks);
 }
 export async function redirectToAuthCodeFlow(clientId) {
     const verifier = generateCodeVerifier(128);
@@ -73,7 +77,7 @@ async function fetchProfile(token) {
 
     return await result.json();
 }
-async function fetchTopTracks(token, timeRange) {
+async function fetchTopTracks(token, timeRange="short") {
     timeRange += "_term";
     const result = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
