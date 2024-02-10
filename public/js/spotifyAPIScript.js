@@ -1,16 +1,18 @@
+/*Spotify API Script courtesy of spotify!! I did not write most of this LOL please don't sue me spottyfy love you bye */
 const clientId = "68738c44f66d4a36937371c85722708c";
 const redirect_uri = "https://willow-red.github.io/cyberfy/";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
-if (!code) {
-    redirectToAuthCodeFlow(clientId);
-} else {
-    const accessToken = await getAccessToken(clientId, code);
-    const profile = await fetchProfile(accessToken);
-    const topTracks = await fetchTopTracks(accessToken);
-    console.log(topTracks);
-    populateUI(profile, topTracks);
+export async function loadData(timeRange="short") {
+    if (!code) {
+        redirectToAuthCodeFlow(clientId);
+    } else {
+        const accessToken = await getAccessToken(clientId, code);
+        const profile = await fetchProfile(accessToken);
+        const topTracks = await fetchTopTracks(accessToken, timeRange);
+        populateUI(profile, topTracks);
+    }
 }
 export async function redirectToAuthCodeFlow(clientId) {
     const verifier = generateCodeVerifier(128);
@@ -28,7 +30,6 @@ export async function redirectToAuthCodeFlow(clientId) {
 
     document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
 }
-
 function generateCodeVerifier(length) {
     let text = '';
     let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -38,7 +39,6 @@ function generateCodeVerifier(length) {
     }
     return text;
 }
-
 async function generateCodeChallenge(codeVerifier) {
     const data = new TextEncoder().encode(codeVerifier);
     const digest = await window.crypto.subtle.digest('SHA-256', data);
@@ -47,7 +47,6 @@ async function generateCodeChallenge(codeVerifier) {
         .replace(/\//g, '_')
         .replace(/=+$/, '');
 }
-
 export async function getAccessToken(clientId, code) {
     const verifier = localStorage.getItem("verifier");
 
@@ -67,35 +66,30 @@ export async function getAccessToken(clientId, code) {
     const { access_token } = await result.json();
     return access_token;
 }
-async function fetchProfile(token){
+async function fetchProfile(token) {
     const result = await fetch("https://api.spotify.com/v1/me", {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
 
     return await result.json();
 }
-
-async function fetchTopTracks(token){
-    const result = await fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term", {
+async function fetchTopTracks(token, timeRange) {
+    timeRange += "_term";
+    const result = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
     return await result.json();
 }
 
+//I lowkey wrote this part actually
 function populateUI(profile, topTracks) {
     document.getElementById("displayName").innerText = profile.display_name;
-    if (profile.images[0]) {
-        const profileImage = new Image(200, 200);
-        profileImage.src = profile.images[0].url;
-        document.getElementById("avatar").appendChild(profileImage);
-    }
-    document.getElementById("email").innerText = profile.email;
     //top tracks
-    for(var i = 0; i < topTracks.items.length; i++) {
+    for (var i = 0; i < topTracks.items.length; i++) {
         const track = topTracks.items[i];
         const li = document.createElement("li");
         var trackInfo = track.name + " - ";
-        for(var j = 0; j < track.artists.length; j++) {
+        for (var j = 0; j < track.artists.length; j++) {
             trackInfo += track.artists[j].name + " ";
         }
         li.innerText = trackInfo;

@@ -1,0 +1,58 @@
+:root{
+    --pink: #ffaedf;
+    --blue: #b9d4fe;
+    --green: #87ff6f;
+}
+body{
+    font-family: Helvetica, sans-serif;
+    margin: 3.5em;
+}
+#controlPanel{
+    border: 1px solid black;
+    width: 20%;
+    padding: 1em;
+    float: right;
+    text-align: center;
+    border-radius: 0.5em;
+}
+#dataInterface{
+    border: 1px solid black;
+    width: 40%;
+    padding: 1em;
+    margin: auto;
+    border-radius: 0.5em;
+}
+
+/*------THEME BUTTONS------*/
+.timeButton{
+    display: inline-block;
+    padding: 1em;
+}
+.themeButton{
+    display: inline-block;
+    padding: 1em;
+    opacity: 0.5;
+}
+#pinkThemeButton{
+    background-color: var(--pink);
+}
+#blueThemeButton{
+    background-color: var(--blue);
+}
+#neoThemeButton{
+    background-color: var(--green);
+}
+.selectedOption{
+    border: 2px solid black;
+    opacity: 1;
+}
+/*---THEMES---*/
+.pinkTheme{
+    background-color: var(--pink);
+}
+.blueTheme{
+    background-color: var(--blue);
+}
+.neoTheme{
+    background-color: var(--green);
+}

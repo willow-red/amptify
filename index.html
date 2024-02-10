@@ -2,20 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Cute spotify</title>
-    <script src="./public/js/script.js" type="module"></script>
+    <title>Cyberfy</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="./public/js/spotifyAPIScript.js" type="module"></script>
   </head>
   <body>
-    <h1>See your top tracks</h1>
+    <!-- User Control Panel -->
+    <section id="controlPanel">
+      <h3>Control Panel</h3>
+      <p>Theme Selector</p>
+      <button type="button" value="pink" class="themeButton selectedOption" id="pinkThemeButton">Pink</button>
+      <button type="button" value="blue" class="themeButton" id="blueThemeButton">Blue</button>
+      <button type="button" value="neo" class="themeButton" id="neoThemeButton">Neo</button>
+      <p>Time frame</p>
+      <button type="button" value="short" class="timeButton selectedOption" id="shortTimeButton">1 Month</button>
+      <button type="button" value="medium" class="timeButton" id="mediumTimeButton">6 Months</button>
+      <button type="button" value="long" class="timeButton" id="longTimeButton">All time</button>
+    </section>
 
-    <section id="profile">
+    <h1>cyberfy</h1>
+
+    <!--Display Data-->
+    <section id="dataInterface" class="pinkTheme">
       <h2>User <span id="displayName"></span></h2>
-      <span id="avatar"></span>
-      <p>Email: <span id="email"></span></p>
-      <h3>Top Tracks (past month)</h3>
+      <h3>Top Tracks</h3>
       <ul id="topTracks">
+        <li>Track test - Artist</li>
       </ul>
     </section>
+
+    <!--Scripts-->
+    <script src="./public/js/controlPanel.js" type="module"></script>
+    <script src="./public/js/imageSaving.js"></script>
 
   </body>
 </html>
