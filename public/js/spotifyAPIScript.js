@@ -13,10 +13,10 @@ if (!code) {
     const topTracks = await fetchTopTracks(accessToken, "short");
     populateUI(profile, topTracks);
 }
-export async function reloadData(timeRange="short") {
+export async function reloadTracks(timeRange="short") {
     //get new time range
     const topTracks = await fetchTopTracks(accessToken, timeRange);
-    populateUI(profile, topTracks);
+    populateTracks(topTracks);
 }
 export async function redirectToAuthCodeFlow(clientId) {
     const verifier = generateCodeVerifier(128);
@@ -88,6 +88,12 @@ async function fetchTopTracks(token, timeRange="short") {
 //I lowkey wrote this part actually
 function populateUI(profile, topTracks) {
     document.getElementById("displayName").innerText = profile.display_name;
+    //top tracks
+    populateTracks(topTracks);
+}
+function populateTracks(topTracks){
+    //clear previous
+    document.getElementById("topTracks").innerHTML = "";
     //top tracks
     for (var i = 0; i < topTracks.items.length; i++) {
         const track = topTracks.items[i];

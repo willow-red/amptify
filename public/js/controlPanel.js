@@ -1,4 +1,4 @@
-import { reloadData } from "./spotifyAPIScript.js";
+import { reloadTracks } from "./spotifyAPIScript.js";
 /*User inputs and stuff*/
 //CURRENT SETTINGS- no need to reload if the current option is reselected
 let theme = "pink";
@@ -41,5 +41,5 @@ function changeTimeFrame(newTimeFrame){
     //update current settings
     timeFrame = newTimeFrame;
     //call api
-    reloadData(timeFrame);
+    reloadTracks(timeFrame);
 }
