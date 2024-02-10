@@ -10,7 +10,7 @@ if (!code) {
 } else {
     accessToken = await getAccessToken(clientId, code);
     const profile = await fetchProfile(accessToken);
-    const topTracks = await fetchTopTracks(accessToken, timeRange);
+    const topTracks = await fetchTopTracks(accessToken);
     populateUI(profile, topTracks);
 }
 export async function reloadData(timeRange="short") {
