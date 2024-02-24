@@ -13,7 +13,7 @@ if (!code) {
     const topTracks = await fetchTopTracks(accessToken, "short");
     populateUI(profile, topTracks);
 }
-export async function reloadTracks(timeRange="short") {
+export async function reloadTracks(timeRange = "short") {
     //get new time range
     const topTracks = await fetchTopTracks(accessToken, timeRange);
     populateTracks(topTracks);
@@ -77,9 +77,9 @@ async function fetchProfile(token) {
 
     return await result.json();
 }
-async function fetchTopTracks(token, timeRange="short") {
+async function fetchTopTracks(token, timeRange = "short") {
     timeRange += "_term";
-    const result = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, {
+    const result = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=10`, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
     return await result.json();
@@ -91,18 +91,41 @@ function populateUI(profile, topTracks) {
     //top tracks
     populateTracks(topTracks);
 }
-function populateTracks(topTracks){
+function populateTracks(topTracks) {
     //clear previous
     document.getElementById("topTracks").innerHTML = "";
+    //first add top track
+    const top = topTracks.items[0];
+    document.getElementById("topTrackTitle").innerText = top.name + " - ";
+    for (var i = 0; i < top.artists.length; i++) {
+        document.getElementById("topTrackTitle").innerText += top.artists[i].name + " ";
+    }
     //top tracks
     for (var i = 0; i < topTracks.items.length; i++) {
         const track = topTracks.items[i];
         const li = document.createElement("li");
+        const div = document.createElement("div");
+        div.classList.add("trackRow");
+        const trackP = document.createElement("p");
+        trackP.classList.add("trackName");
+        const lengthP = document.createElement("p");
+        lengthP.classList.add("trackLength");
         var trackInfo = track.name + " - ";
         for (var j = 0; j < track.artists.length; j++) {
             trackInfo += track.artists[j].name + " ";
         }
-        li.innerText = trackInfo;
+        trackP.innerText = trackInfo;
+        lengthP.innerText = msToMins(track.duration_ms);
+        div.appendChild(trackP);
+        div.appendChild(lengthP);
+        li.appendChild(div);
         document.getElementById("topTracks").appendChild(li);
     }
+}
+function msToMins(ms) {
+    const totalSeconds = Math.round(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds - minutes * 60;
+
+    return `${minutes}:${seconds}`;
 }

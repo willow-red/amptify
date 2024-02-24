@@ -4,6 +4,9 @@ import { reloadTracks } from "./spotifyAPIScript.js";
 let theme = "pink";
 let timeFrame = "short";
 const dataInterface = document.querySelector("#dataInterface");
+const currentDate = new Date().toDateString();
+document.querySelector("#displayDate").innerText = currentDate;
+
 //theme buttons + bind onclick function
 const themeButtons = document.querySelectorAll(".themeButton");
 themeButtons.forEach(button => {
@@ -27,7 +30,7 @@ function changeTheme(newTheme){
     document.querySelector(`#${theme}ThemeButton`).classList.remove("selectedOption");
     document.querySelector(`#${newTheme}ThemeButton`).classList.add("selectedOption");
     //update interface
-    dataInterface.className = newTheme + "Theme";
+    dataInterface.backgroundImage = `url("../assets/${newTheme}UI.png")`;
     //update current settings
     theme = newTheme;
 }

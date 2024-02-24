@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="description"
+      content="a y2k spotify visuallizer for your music data. multiple theme options to fit your unique aesthetic.">
+    <meta name="keywords" content="Spotify, y2k, aesthetic, cybercore">
+    <meta name="author" content="Sara Alvarado">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyberfy</title>
     <link rel="stylesheet" href="./public/css/style.css">
     <script src="./public/js/spotifyAPIScript.js" type="module"></script>
@@ -11,25 +16,42 @@
     <section id="controlPanel">
       <h3>Control Panel</h3>
       <p>Theme Selector</p>
-      <button type="button" value="pink" class="themeButton selectedOption" id="pinkThemeButton">Pink</button>
-      <button type="button" value="blue" class="themeButton" id="blueThemeButton">Blue</button>
-      <button type="button" value="neo" class="themeButton" id="neoThemeButton">Neo</button>
+      <section>
+        <button type="button" value="pink" class="themeButton selectedOption"
+          id="pinkThemeButton">Pink</button>
+        <button type="button" value="blue" class="themeButton"
+          id="blueThemeButton">Blue</button>
+        <button type="button" value="neo" class="themeButton"
+          id="neoThemeButton">Neo</button>
+      </section>
       <p>Time frame</p>
-      <button type="button" value="short" class="timeButton selectedOption" id="shortTimeButton">1 Month</button>
-      <button type="button" value="medium" class="timeButton" id="mediumTimeButton">6 Months</button>
-      <button type="button" value="long" class="timeButton" id="longTimeButton">All time</button>
+      <section>
+        <button type="button" value="short" class="timeButton selectedOption"
+          id="shortTimeButton">1 Month</button>
+        <button type="button" value="medium" class="timeButton"
+          id="mediumTimeButton">6 Months</button>
+        <button type="button" value="long" class="timeButton"
+          id="longTimeButton">All time</button>
+      </section>
     </section>
-
-    <h1>cyberfy</h1>
 
     <!--Display Data-->
-    <section id="dataInterface" class="pinkTheme">
-      <h2>User <span id="displayName"></span></h2>
-      <h3>Top Tracks</h3>
-      <ul id="topTracks">
-        <li>Track test - Artist</li>
-      </ul>
-    </section>
+    <div id="dataWrapper">
+      <section id="dataInterface">
+        <p id="dataInterfaceTitle"><span id="displayName"></span>'s cyberfy for
+          <span id="displayDate"></span></p>
+        <div id="dataInterfaceTopTrackTitle">
+          <h4>TOP TRACK</h4>
+          <p id="topTrackTitle">Top Track Title - Artist</p>
+        </div>
+        <ol id="topTracks">
+          <li>
+            <div class="trackRow"><p class="trackName">Song Title- Artist</p><p
+                class="trackLength">0:00</p></div>
+          </li>
+        </ol>
+      </section>
+    </div>
 
     <!--Scripts-->
     <script src="./public/js/controlPanel.js" type="module"></script>

@@ -1,58 +1,233 @@
-:root{
-    --pink: #ffaedf;
-    --blue: #b9d4fe;
-    --green: #87ff6f;
+:root {
+    --pink: #FF99E1;
+    --blue: #5D95CD;
+    --green: #00E617;
+    --grey: #5B5D60;
 }
-body{
-    font-family: Helvetica, sans-serif;
-    margin: 3.5em;
+
+@font-face {
+    font-family: "Satoshi";
+    src: url(../assets/fonts/Satoshi-Variable.ttf);
 }
-#controlPanel{
+
+body {
+    font-family: "Satoshi", sans-serif;
+}
+
+#controlPanel {
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
-    width: 20%;
     padding: 1em;
-    float: right;
     text-align: center;
     border-radius: 0.5em;
+    margin: 1em;
 }
-#dataInterface{
-    border: 1px solid black;
-    width: 40%;
-    padding: 1em;
+#controlPanel h3 {
+    margin: 0;
+}
+
+/*--------DISPLAY DATA INTERFACE-------*/
+#dataWrapper {
+    display: flex;
+    justify-content: center;
+}
+#dataInterface {
+    position: relative;
+    border: 1px solid rgb(171, 171, 171);
+    width: 340px;
+    height: 408px;
     margin: auto;
-    border-radius: 0.5em;
+    color: var(--grey);
+    background-image: url("../assets/pinkUI.png");
+    background-size: cover;
+    background-position: center;
+}
+#dataInterfaceTitle {
+    position: absolute;
+    top: 21px;
+    left: 80px;
+    font-size: 0.5em;
+    font-weight: 400;
+}
+
+#dataInterfaceTopTrackTitle {
+    position: absolute;
+    top: 49px;
+    right: 85px;
+    font-size: 0.5em;
+    text-align: end;
+    line-height: 0;
+}
+
+#topTracks {
+    position: absolute;
+    top: 135px;
+    left: 54px;
+    font-size: 0.4em;
+}
+
+.trackRow {
+    display: inline-block;
+    width: 150px;
+}
+
+.trackLength {
+    margin: 0;
+    text-align: end;
+    float: right;
+}
+.trackName {
+    margin: 0;
+    display: inline-block;
 }
 
 /*------THEME BUTTONS------*/
-.timeButton{
+.timeButton {
     display: inline-block;
     padding: 1em;
 }
-.themeButton{
+
+.themeButton {
     display: inline-block;
     padding: 1em;
     opacity: 0.5;
 }
-#pinkThemeButton{
+
+#pinkThemeButton {
     background-color: var(--pink);
 }
-#blueThemeButton{
+
+#blueThemeButton {
     background-color: var(--blue);
 }
-#neoThemeButton{
+
+#neoThemeButton {
     background-color: var(--green);
 }
-.selectedOption{
+
+.selectedOption {
     border: 2px solid black;
     opacity: 1;
 }
-/*---THEMES---*/
-.pinkTheme{
-    background-color: var(--pink);
+
+/*-----MEDIA QUERIES-----*/
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #dataInterface {
+        width: 550px;
+        height: 660px;
+    }
+    #dataInterfaceTitle {
+        top: 35px;
+        left: 130px;
+        font-size: 0.75em;
+    }
+    #dataInterfaceTopTrackTitle {
+        top: 80px;
+        right: 140px;
+        font-size: 0.75em;
+    }
+    #topTracks {
+        top: 220px;
+        left: 110px;
+        font-size: 0.7em;
+    }
+    .trackRow {
+        width: 245px;
+    }
 }
-.blueTheme{
-    background-color: var(--blue);
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    body {
+        padding: 2em;
+    }
+    #controlPanel {
+        float: right;
+        width: 20%;
+    }
+    #dataInterface {
+        margin: 1em;
+        width: 500px;
+        height: 600px;
+    }
+    #dataInterfaceTitle {
+        top: 31px;
+        left: 120px;
+        font-size: 0.75em;
+    }
+    #dataInterfaceTopTrackTitle {
+        top: 74px;
+        right: 129px;
+        font-size: 0.75em;
+    }
+    #topTracks {
+        top: 200px;
+        left: 95px;
+        font-size: 0.7em;
+    }
+    .trackRow {
+        width: 225px;
+    }
 }
-.neoTheme{
-    background-color: var(--green);
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #dataInterface {
+        width: 600px;
+        height: 720px;
+    }
+    #dataInterfaceTitle {
+        top: 40px;
+        left: 142px;
+        font-size: 0.75em;
+    }
+    #dataInterfaceTopTrackTitle {
+        top: 90px;
+        right: 155px;
+        font-size: 0.75em;
+    }
+    #topTracks {
+        top: 240px;
+        left: 121px;
+        font-size: 0.7em;
+    }
+    .trackRow {
+        width: 270px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    #controlPanel {
+        width: 25%;
+    }
+    #dataInterface {
+        width: 720px;
+        height: 864px;
+    }
+    #dataInterfaceTitle {
+        top: 46px;
+        left: 168px;
+        font-size: 1em;
+    }
+    #dataInterfaceTopTrackTitle {
+        top: 105px;
+        right: 182px;
+        font-size: 1em;
+    }
+    #topTracks {
+        top: 288px;
+        left: 155px;
+        font-size: 0.9em;
+    }
+    .trackRow {
+        width: 320px;
+    }
 }
