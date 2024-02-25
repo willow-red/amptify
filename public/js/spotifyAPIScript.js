@@ -123,8 +123,8 @@ function populateTracks(topTracks) {
         }
         //trim extra comma and space
         trackInfo = trackInfo.substring(0, trackInfo.length - 2);
-        if (trackInfo.length > 45) {
-            trackInfo = trackInfo.substring(0, 42) + "...";
+        if (trackInfo.length > 40) {
+            trackInfo = trackInfo.substring(0, 37) + "...";
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
