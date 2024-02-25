@@ -45,9 +45,9 @@ body {
 }
 #dataInterfaceTitle {
     position: absolute;
-    top: 21px;
+    top: 23.5px;
     left: 80px;
-    font-size: 0.5em;
+    font-size: 0.4em;
     font-weight: 400;
 }
 
@@ -120,9 +120,9 @@ body {
         height: 660px;
     }
     #dataInterfaceTitle {
-        top: 35px;
+        top: 39px;
         left: 130px;
-        font-size: 0.75em;
+        font-size: 0.65em;
     }
     #dataInterfaceTopTrackTitle {
         top: 80px;
@@ -142,7 +142,7 @@ body {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     body {
-        padding: 2em;
+        padding: 1em;
     }
     #controlPanel {
         float: right;
@@ -154,9 +154,8 @@ body {
         height: 600px;
     }
     #dataInterfaceTitle {
-        top: 31px;
+        top: 34px;
         left: 120px;
-        font-size: 0.75em;
     }
     #dataInterfaceTopTrackTitle {
         top: 74px;
@@ -175,14 +174,17 @@ body {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    body {
+        padding: 2em;
+    }
     #dataInterface {
         width: 600px;
         height: 720px;
     }
     #dataInterfaceTitle {
-        top: 40px;
+        top: 43px;
         left: 142px;
-        font-size: 0.75em;
+        font-size: 0.7em;
     }
     #dataInterfaceTopTrackTitle {
         top: 90px;
@@ -213,9 +215,9 @@ body {
         height: 864px;
     }
     #dataInterfaceTitle {
-        top: 46px;
+        top: 54px;
         left: 168px;
-        font-size: 1em;
+        font-size: 0.8em;
     }
     #dataInterfaceTopTrackTitle {
         top: 105px;
@@ -225,7 +227,7 @@ body {
     #topTracks {
         top: 288px;
         left: 155px;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
     .trackRow {
         width: 320px;

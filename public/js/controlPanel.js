@@ -30,7 +30,7 @@ function changeTheme(newTheme){
     document.querySelector(`#${theme}ThemeButton`).classList.remove("selectedOption");
     document.querySelector(`#${newTheme}ThemeButton`).classList.add("selectedOption");
     //update interface
-    dataInterface.backgroundImage = `url("../assets/${newTheme}UI.png")`;
+    dataInterface.style.backgroundImage = `url("../assets/${newTheme}UI.png")`;
     //update current settings
     theme = newTheme;
 }

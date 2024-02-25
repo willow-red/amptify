@@ -96,10 +96,17 @@ function populateTracks(topTracks) {
     document.getElementById("topTracks").innerHTML = "";
     //first add top track
     const top = topTracks.items[0];
-    document.getElementById("topTrackTitle").innerText = top.name + " - ";
+    var topTrack = top.name + " - ";
     for (var i = 0; i < top.artists.length; i++) {
-        document.getElementById("topTrackTitle").innerText += top.artists[i].name + " ";
+        topTrack += top.artists[i].name + ", ";
     }
+    //trim extra comma and space
+    topTrack = topTrack.substring(0, topTrack.length - 2);
+    //check length
+    if (topTrack.length > 36) {
+        topTrack = topTrack.substring(0, 33) + "...";
+    }
+    document.getElementById("topTrackTitle").innerHTML = topTrack;
     //top tracks
     for (var i = 0; i < topTracks.items.length; i++) {
         const track = topTracks.items[i];
@@ -113,6 +120,9 @@ function populateTracks(topTracks) {
         var trackInfo = track.name + " - ";
         for (var j = 0; j < track.artists.length; j++) {
             trackInfo += track.artists[j].name + " ";
+        }
+        if (trackInfo.length > 36) {
+            trackInfo = trackInfo.substring(0, 33) + "...";
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
