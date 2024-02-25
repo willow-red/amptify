@@ -101,7 +101,7 @@ function populateTracks(topTracks) {
         topTrack += top.artists[i].name + ",";
     }
     //trim extra comma and space
-    topTrack = topTrack.substring(0, topTrack.length - 2);
+    topTrack = topTrack.substring(0, topTrack.length - 1);
     //check length
     if (topTrack.length > 38) {
         topTrack = topTrack.substring(0, 35) + "...";
@@ -119,12 +119,12 @@ function populateTracks(topTracks) {
         lengthP.classList.add("trackLength");
         var trackInfo = track.name + " - ";
         for (var j = 0; j < track.artists.length; j++) {
-            trackInfo += track.artists[j].name + ", ";
+            trackInfo += track.artists[j].name + ",";
         }
         //trim extra comma and space
-        trackInfo = trackInfo.substring(0, trackInfo.length - 2);
-        if (trackInfo.length > 40) {
-            trackInfo = trackInfo.substring(0, 37) + "...";
+        trackInfo = trackInfo.substring(0, trackInfo.length - 1);
+        if (trackInfo.length > 43) {
+            trackInfo = trackInfo.substring(0, 40) + "...";
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
