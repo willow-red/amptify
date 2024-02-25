@@ -98,7 +98,7 @@ function populateTracks(topTracks) {
     const top = topTracks.items[0];
     var topTrack = top.name + " - ";
     for (var i = 0; i < top.artists.length; i++) {
-        topTrack += top.artists[i].name + ", ";
+        topTrack += top.artists[i].name + ",";
     }
     //trim extra comma and space
     topTrack = topTrack.substring(0, topTrack.length - 2);
@@ -124,7 +124,7 @@ function populateTracks(topTracks) {
         //trim extra comma and space
         trackInfo = trackInfo.substring(0, trackInfo.length - 2);
         if (trackInfo.length > 45) {
-            trackInfo = trackInfo.substring(0, 45) + "...";
+            trackInfo = trackInfo.substring(0, 42) + "...";
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
