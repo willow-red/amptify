@@ -1,6 +1,6 @@
 import { reloadTracks } from "./spotifyAPIScript.js";
 /*User inputs and stuff*/
-//CURRENT SETTINGS- no need to reload if the current option is reselected
+//CURRENT SETTINGS
 let theme = "pink";
 let timeFrame = "short";
 const dataInterface = document.querySelector("#dataInterface");
@@ -22,20 +22,27 @@ timeButtons.forEach(button => {
     }
 });
 
-function changeTheme(newTheme){
-    if(newTheme === theme){
+function changeTheme(newTheme) {
+    if (newTheme === theme) {
         return;
     }
     //update selected button visual
     document.querySelector(`#${theme}ThemeButton`).classList.remove("selectedOption");
     document.querySelector(`#${newTheme}ThemeButton`).classList.add("selectedOption");
     //update interface
-    dataInterface.style.backgroundImage = `url("../assets/${newTheme}UI.png")`;
+    dataInterface.style.backgroundImage = `url("public/assets/${newTheme}UI.png")`;
+    //change neo only
+    if (newTheme === "neo") {
+        dataInterface.style.color = "var(--green)";
+    }
+    else {
+        dataInterface.style.color = "var(--grey)";
+    }
     //update current settings
     theme = newTheme;
 }
-function changeTimeFrame(newTimeFrame){
-    if(newTimeFrame === timeFrame){
+function changeTimeFrame(newTimeFrame) {
+    if (newTimeFrame === timeFrame) {
         return;
     }
     //update selected button visual
