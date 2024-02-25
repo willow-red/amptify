@@ -13,6 +13,12 @@
 body {
     font-family: "Satoshi", sans-serif;
 }
+#logo{
+    width: 12em;
+    height: auto;
+    display: block;
+    margin: 2em auto;
+}
 
 #controlPanel {
     display: flex;
@@ -140,7 +146,7 @@ body {
     #topTracks {
         top: 220px;
         left: 115px;
-        font-size: 0.7em;
+        font-size: 0.65em;
     }
 
     .trackRow {
@@ -152,6 +158,10 @@ body {
 @media only screen and (min-width: 768px) {
     body {
         padding: 1em;
+    }
+
+    #logo{
+        margin: 1em auto;
     }
 
     #controlPanel {
@@ -179,7 +189,7 @@ body {
     #topTracks {
         top: 200px;
         left: 100px;
-        font-size: 0.65em;
+        font-size: 0.59em;
     }
 
     .trackRow {
@@ -191,6 +201,10 @@ body {
 @media only screen and (min-width: 992px) {
     body {
         padding: 2em;
+    }
+
+    #logo{
+        margin: 1em;
     }
 
     #dataInterface {
@@ -252,7 +266,7 @@ body {
     #topTracks {
         top: 288px;
         left: 160px;
-        font-size: 0.8em;
+        font-size: 0.82em;
     }
 
     .trackRow {
