@@ -103,8 +103,8 @@ function populateTracks(topTracks) {
     //trim extra comma and space
     topTrack = topTrack.substring(0, topTrack.length - 1);
     //check length
-    if (topTrack.length > 38) {
-        topTrack = topTrack.substring(0, 35) + "...";
+    if (topTrack.length > 40) {
+        topTrack = topTrack.substring(0, 37) + "...";
     }
     document.getElementById("topTrackTitle").innerHTML = topTrack;
     //top tracks
@@ -123,8 +123,8 @@ function populateTracks(topTracks) {
         }
         //trim extra comma and space
         trackInfo = trackInfo.substring(0, trackInfo.length - 1);
-        if (trackInfo.length > 43) {
-            trackInfo = trackInfo.substring(0, 40) + "...";
+        if (trackInfo.length > 45) {
+            trackInfo = trackInfo.substring(0, 42) + "...";
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
