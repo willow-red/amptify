@@ -103,8 +103,8 @@ function populateTracks(topTracks) {
     //trim extra comma and space
     topTrack = topTrack.substring(0, topTrack.length - 1);
     //check length
-    if (topTrack.length > 33) {
-        topTrack = topTrack.substring(0, 30) + "...";
+    if (topTrack.length > 35) {
+        topTrack = topTrack.substring(0, 32) + "...";
     }
     document.getElementById("topTrackTitle").innerHTML = topTrack;
     //top tracks
