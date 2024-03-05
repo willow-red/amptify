@@ -111,8 +111,7 @@ function populateTracks(topTracks) {
     for (var i = 0; i < topTracks.items.length; i++) {
         const track = topTracks.items[i];
         const li = document.createElement("li");
-        const div = document.createElement("div");
-        div.classList.add("trackRow");
+        li.classList.add("trackRow");
         const trackP = document.createElement("p");
         trackP.classList.add("trackName");
         const lengthP = document.createElement("p");
@@ -128,9 +127,8 @@ function populateTracks(topTracks) {
         }
         trackP.innerText = trackInfo;
         lengthP.innerText = msToMins(track.duration_ms);
-        div.appendChild(trackP);
-        div.appendChild(lengthP);
-        li.appendChild(div);
+        li.appendChild(trackP);
+        li.appendChild(lengthP);
         document.getElementById("topTracks").appendChild(li);
     }
 }
